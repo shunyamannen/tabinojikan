@@ -1,27 +1,20 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-# <ここにアプリ名を入力>
+# 旅の時間
 
 ## サイト概要
 ### サイトテーマ
-<...>
+しおりをつくり、仲間とシェアができ、旅行する方にも参考にできるレビュウサイト
 
 ### テーマを選んだ理由
-<...>
+コロナが明け旅行する方も増えてきている中、旅行のスケジュール管理が苦手な方や参考にしたい方などが見れるサイトを作りたいと思いました。
 
 ### ターゲットユーザ
-<...>
+旅行の計画を立てる人や旅行をしている人など
 
 ### 主な利用シーン
-<...>
+旅行前、旅行中
 
 ## 設計書
-<...>
+
 
 ## 開発環境
 - OS：Linux(CentOS)
