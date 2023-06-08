@@ -21,7 +21,7 @@
 
 
 ## 設計書
-
+- ER図　https://app.diagrams.net/?libs=general;er#G1-ipzcL5Vncvdk3fnPmxPePI3OedY0uWm
 
 ## 開発環境
 - OS：Linux(CentOS)
