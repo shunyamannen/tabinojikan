@@ -1,0 +1,78 @@
+ <div class="col-md-4 px-sm-0 mb-3">
+      <% if @user == current_user %>
+        <h4 class="d-inline-block">マイページ</h4>
+      <% else %>
+        <h4 class="d-inline-block">投稿者</h4>
+      <% end %>
+    </div>
+    <!--ユーザー編集リンク-->
+    <div class="col-md-6">
+      <% if @user.name != "ゲストユーザー" && @user == current_user %>
+        <%= link_to edit_user_path(@user), class:"btn btn-primary mr-3" do %>
+          <p class="mb-0"><i class="fas fa-user-cog"></i> 編集する</p>
+        <% end %>
+        <%= link_to unsubscribe_path, class:"btn btn-danger mr-3" do %>
+          <p class="mb-0"><i class="fas fa-user-cog"></i> 退会する</p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <!--フォロワー/フォロー表示-->
+    <div class="col-lg-2 d-flex flex-column">
+      <%= link_to user_followers_path(@user.id) do %>
+        <P>フォロワー： <%= @user.followers.count %></P>
+      <% end %>
+      <%= link_to user_followings_path(@user.id) do %>
+        <P>フォロー： <%= @user.followings.count %></P>
+      <% end %>
+
+      <!--フォローするボタン-->
+      <% if @user != current_user %>
+        <% if current_user.following?(@user) %>
+          <%= link_to  user_relationships_path(@user.id), method: :delete, class:"btn btn-secondary mb-3" do %>
+            <p class="mb-0">フォロー外す</p>
+          <% end %>
+        <% else %>
+          <%= link_to user_relationships_path(@user.id), method: :post, class:"btn btn-primary mb-3" do %>
+            <p class="mb-0">フォローする</p>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <!--いいね記事一覧リンク-->
+      <%= link_to favorites_user_path(@user), class:"btn btn-primary mb-3" do %>
+        <p class="mb-0">いいね記事</p>
+      <% end %>
+
+    </div>
+    <!--ユーザー画像-->
+    <div class="col-xl-4 col-lg-5 text-center mb-3">
+      <%= image_tag @user.get_profile_image(320,320) %>
+    </div>
+    <!--ネーム、紹介文-->
+    <div class="col-xl-6 col-lg-5">
+      <div class="card text-white bg-secondary border-dark mb-3" style="max-width: 20rem;">
+        <div class="card-header">ユーザー名</div>
+        <div class="card-body">
+          <p class="card-text"><%= @user.name %></p>
+        </div>
+      </div>
+      <div class="card text-white bg-secondary border-dark mb-3" style="max-width: 60rem;">
+        <div class="card-header">紹介文</div>
+        <div class="card-body">
+          <p class="card-text"><%= @user.introduction %></p>
+        </div>
+      </div>
+    </div>
+    <!--投稿履歴一覧-->
+    <div class="col-sm-12 mt-3">
+      <%= render 'post_index', posts: @posts %>
+    </div>
+    <!--ページネーション-->
+    <div class="my-1" style="max-width: 200px; margin: 0 auto;">
+      <h3><%= paginate @posts %></h3>
+    </div>
+  </div>
+</div>

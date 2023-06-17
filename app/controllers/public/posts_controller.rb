@@ -1,3 +1,4 @@
+
 class Public::PostsController < ApplicationController
   def index
       @q = Post.ransack(params[:q])
