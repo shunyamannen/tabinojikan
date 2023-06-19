@@ -2,15 +2,14 @@
   <div class="row">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="bg-light p-4 mb-0">投稿フォーム</h5>
-
-      <div class="p-4">
+      
+       <div class="p-4">
         <!--エラーメッセージ出す-->
         <%= render 'error_message', post: @post %>
 
         <!--新規投稿　入力フォーム-->
         <%= render 'form', post: @post %>
       </div>
-
-    </div>
+     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
-
+    before_action :ensure_correct_user, only: [:update, :edit]
+  
   def index
     @posts = Post.all
     @post_page = Post.page(params[:page]).per(8)
@@ -17,16 +18,17 @@ class Public::PostsController < ApplicationController
     @post = Post.new
   end
 
-  def create
+ def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      flash[:notice] = "投稿作成しました"
       redirect_to posts_path
     else
+      flash[:alert] = "投稿作成できませんでした"
       render :new
     end
   end
-
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
