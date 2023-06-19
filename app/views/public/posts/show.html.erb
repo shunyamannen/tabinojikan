@@ -1,20 +1,18 @@
 <div class="container">
-  <div class="row mt-3">
+  <div class="row">
     <div class="col-lg-4 px-sm-0 mb-3">
       <h4 class="d-inline-block">投稿詳細</h4>
     </div>
 
     <div class="col-lg-8 px-sm-0 mb-3">
       <!--編集ボタン-->
-      <% if @post.user == current_user %>
-        <%= link_to edit_post_path(@post), class:"btn btn-lg btn-primary" do %>
-          <div class="mb-0"><i class="far fa-edit"></i> 編集する</div>
-        <% end %>
+      <%= link_to edit_post_path(@post), class:"btn btn-lg btn-primary" do %>
+      <div class="mb-0"><i class="far fa-edit"></i> 編集する</div>
       <% end %>
 
       <!--削除ボタン-->
       <% if @post.user == current_user %>
-        <%= link_to "削除する", post_path(@post), method: :delete, class:"ml-3 btn btn-lg btn-warning" %>
+      <%= link_to "削除する", post_path(@post), method: :delete, class:"ml-3 btn btn-lg btn-warning" %>
       <% end %>
     </div>
 
@@ -35,58 +33,14 @@
           <td><%= @post.created_at.to_s(:datetime_jp) %></td>  <!--日付の表示調整した-->
         </tr>
         <tr>
-          <th style="width:150px">投稿者</th>
-          <td><%= link_to user_path(@post.user.id) do %><%= @post.user.name %><% end %></td>
+          <th style="width:150px">ユーザー名</th>
+          <td><%= @post.user.name %></td>
         </tr>
         <tr>
           <th style="width:150px">内容</th>
           <td><%= @post.body %></td>
         </tr>
       </table>
-
-      <!--いいね機能-->
-      <div id="favorite_buttons_<%= @post.id %>">
-        <%= render 'public/posts/favorite', post: @post %>
-      </div>
-    </div>
-  </div>
-
-  <!--コメント投稿-->
-  <div class="row mt-4">
-    <div class="col-lg-3 px-sm-0 mb-3 mx-auto">
-      <h6>コメントする</h6>
-      <%= form_with(model:[@post, @comment], method: :post, local: true, class:"text-center") do |f| %>
-        <%= f.text_area :comment_content, class:"form-control", size:"15x3", placeholder: "コメントをここに" %>
-        <%= f.hidden_field :post_id, value: @post.id %>
-        <%= f.submit "投稿", class:"btn btn-outline-primary mt-1" %>
-      <% end %>
-    </div>
-
-    <!--コメント一覧表示-->
-    <div class="col-lg-8  text-left">
-      <table class="table">
-        <tr>
-          <th>ユーザー名</th>
-          <th>コメント</th>
-          <th>投稿日</th>
-          <th></th>
-        </tr>
-      <% @comments.each do |comment| %>
-        <tr>
-          <td><%= link_to user_path(comment.user.id) do %><%= comment.user.name %><% end %></td>
-          <td><%= comment.comment_content %></td>
-          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-          <td>
-            <% if comment.user == current_user %>
-              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-      </table>
-    </div>
-    <div class="my-1" style="max-width: 200px; margin: 0 auto;">
-      <h3><%= paginate @comments %></h3>
     </div>
 
   </div>
