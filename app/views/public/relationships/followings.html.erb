@@ -1,2 +1,13 @@
-<h1>Public::Relationships#followings</h1>
-<p>Find me in app/views/public/relationships/followings.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 px-sm-0 mb-3">
+      <h4 class="d-inline-block">フォロー</h4>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-8 mx-auto">
+      <%= render "follow_list", users: @users %>
+    </div>
+  </div>
+</div>
