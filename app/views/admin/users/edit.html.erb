@@ -1,2 +1,54 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-sm-4 px-sm-0 mb-3">
+      <h4  class="d-inline-block">ユーザー編集</h4>
+    </div>
+  </div>
+
+   <!--エラーメッセージ-->
+  <div class="p-4">
+    <% if @user.errors.any? %>
+      <ul class="alert alert-danger" role="alert">
+        <h6 class-"aleart-heading">
+          <%= @user.errors.count %>件のエラーが発生しました
+        </h6>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <!--編集フォーム-->
+  <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+    <div class="row">
+      <div class="col-sm-4 mt-3">
+        <%= image_tag @user.get_profile_image(200,200) %>
+        <%= f.file_field :profile_image, accept: "image/*", class:"mt-3 w-100" %>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group mt-2">
+          <%= f.label "ユーザー名" %>
+          <%= f.text_field :name, class:"form-control", placeholder:"ユーザー名をここに" %>
+        </div>
+        <div class="form-group mt-2">
+          <%= f.label "メールアドレス" %>
+          <%= f.text_field :email, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label "紹介文" %>
+          <%= f.text_area :introduction, class:"form-control",rows:"5", placeholder:"内容をここに" %>
+      　</div>
+      　<div class="form-group">
+          <%= f.label "会員ステータス", class:"mr-3" %>
+          <%= f.radio_button :members_status, :false %>
+          <%= f.label :members_status, "有効", class:"mr-3" %>
+          <%= f.radio_button :members_status, :true %>
+          <%= f.label :members_status, "退会", class:"mr-3" %>
+      　</div>
+      </div>
+    </div>
+　　<div class="form-group col-sm-2">
+      <%= f.submit '変更を保存する', class:"btn btn-lg btn-block btn-primary"%>
+    </div>
+  <% end %>
+</div>
