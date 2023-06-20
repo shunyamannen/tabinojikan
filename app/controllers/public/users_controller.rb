@@ -16,6 +16,7 @@ class Public::UsersController < ApplicationController
     else
       flash[:alert] = "空欄を入力してください"
       redirect_to edit_user_path(@user)
+    end
   end
 
   def withdraw
@@ -25,6 +26,7 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+  
   def unsubscribe
   end
 end
