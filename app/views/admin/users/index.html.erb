@@ -1,2 +1,56 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-5">
+      <h4>ユーザー一覧（管理）</h4>
+    </div>
+    <!--投稿検索フォーム-->
+    <div class="col-sm-5" >
+      <%= search_form_for @q, url: admin_users_path, class:"form-inline" do |f| %>
+        <%= f.search_field :name_cont, placeholder: "ユーザー名検索",class:"form-control mr-sm-2" %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>ユーザー</th>
+            <th>メールアドレス</th>
+            <th>会員ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="align-middle">
+                <%= image_tag user.get_profile_image(50,50) %>
+              </td>
+              <td class="align-middle">
+                <%= link_to admin_user_path(user) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= user.email %>
+              </td>
+              <td class="align-middle">
+                <% if user.members_status == false %>
+                  <p class="text-success font-weight-bold">有効</p>
+                <% else %>
+                  <p class="text-secondary">退会</p>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= link_to '編集する', edit_admin_user_path(user), class: "btn btn-warning" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
