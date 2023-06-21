@@ -1,2 +1,54 @@
-<h1>Admin::Posts#index</h1>
-<p>Find me in app/views/admin/posts/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h4>投稿一覧（管理）</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>タイトル</th>
+            <th>ユーザー</th>
+            <th>投稿日</th>
+            <th>削除</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td class="align-middle">
+                <%= image_tag post.get_post_image(50,50) %>
+              </td>
+              <td class="align-middle">
+                <%= link_to admin_post_path(post) do %>
+                  <%= post.title %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= link_to admin_user_path(post.user) do %>
+                  <%= post.user.name %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= post.created_at.to_s(:datetime_jp) %>
+              </td>
+              <td class="align-middle">
+                <%= link_to '削除', admin_post_path(post),method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-2 d-block mx-auto">
+    <h5><%= paginate @posts %></h5>
+    </div>
+  </div>
+</div>
