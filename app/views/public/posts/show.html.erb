@@ -37,6 +37,24 @@
         </tr>
       </table>
     </div>
-
+    
+     <!--コメント投稿-->
+      <div class="row mt-4">
+        <div class="col-lg-3 px-sm-0 mb-3 mx-auto">
+          <h6>コメントする</h6>
+          <div id="new_comment">
+            <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
+          </div>
+        </div>
+        <!--コメント一覧表示-->
+        <div class="col-lg-8 text-left">
+          <div id="comments_area">
+              <%= render 'public/comments/post_comments', comments: @comments %>
+          </div>
+        </div>
+        <div class="my-1" style="max-width: 200px; margin: 0 auto;">
+          <h3><%= paginate @comments %></h3>
+        </div>
+      </div>
   </div>
 </div>

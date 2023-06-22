@@ -1,0 +1,20 @@
+<table class="table">
+  <tr>
+    <th>ユーザー名</th>
+    <th>コメント</th>
+    <th>投稿日</th>
+    <th></th>
+  </tr>
+  <% comments.each do |comment| %>
+    <tr>
+      <td><%= link_to user_path(comment.user.id) do %><%= comment.user.name %><% end %></td>
+      <td><%= comment.comment_content %></td>
+      <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class:"btn btn-danger", data: { confirm: '削除しますか？' } %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
