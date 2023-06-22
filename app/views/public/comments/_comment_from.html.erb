@@ -1,0 +1,5 @@
+<%= form_with(model:[post, comment], method: :post, local: false, class:"text-center") do |f| %>
+  <%= f.text_area :comment_content, class:"form-control", size:"15x3", placeholder: "コメントをここに" %>
+  <%= f.hidden_field :post_id, value: post.id %>
+  <%= f.submit "投稿", class:"btn btn-outline-primary mt-1" %>
+<% end %>
