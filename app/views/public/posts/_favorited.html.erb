@@ -1,0 +1,9 @@
+<% if post.favorited?(current_user) %>
+  <%= link_to post_favorites_path(post.id), method: :delete, remote: true, class:"badge rounded-pill bg-primary text-decoration-none" do %>
+    <i class="fas fa-heart fa-lg" style="color: #ff0000;"></i> いいね (<%=post.favorites.count %>)
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post.id), method: :post, remote: true, class:"badge rounded-pill bg-secondary text-decoration-none" do %>
+    <i class="far fa-heart fa-lg"></i> いいねする (<%=post.favorites.count %>)
+  <% end %>
+<% end %>
