@@ -1,0 +1,25 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="col-sm-8 text-center mx-auto my-3">
+      <h2>本当に退会しますか？</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-4 text-center mx-auto my-3">
+      <p>退会すると、会員登録情報や<br>
+      これまで登録した情報やフォロー、フォロワーが閲覧できなくなります。<br>
+      退会する場合は、「退会する」をクリックしてください。</p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-2 mb-3 mx-auto">
+      <%= link_to "退会しない", user_path(current_user), class: "btn btn-primary" %>
+    </div>
+    <div class="col-2 mb-3 mx-auto">
+      <%= link_to "退会する", withdraw_path, class: "btn btn-danger", method: :patch, data: { confirm: '本当に退会しますか？' } %>
+    </div>
+  </div>
+</div>
