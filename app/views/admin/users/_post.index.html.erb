@@ -1,0 +1,24 @@
+<h5>投稿履歴</h5>
+<table class='table table-sm'>
+  <thead>
+    <th>画像</th>
+    <th>タイトル</th>
+    <th>投稿日</th>
+    <th>いいね</th>
+    <th>コメント</th>
+  </thead>
+  <% posts.each do |post| %>
+  <tbody>
+    <td class="align-middle"><%= image_tag post.get_post_image(80,80) %></td>
+    <td class="align-middle">
+      <%= link_to post_path(post.id) do %>
+        <%= post.title %>
+      <% end %>
+    </td>
+    <td class="align-middle"><%= post.created_at.to_s(:datetime_jp) %></td>
+    <td class="align-middle"><%= post.favorites.count %></td>
+    <td class="align-middle"><%= post.comments.count %></td>
+  </tbody>
+  <% end %>
+</table>
+<%= paginate posts %>
