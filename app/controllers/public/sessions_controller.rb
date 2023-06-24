@@ -36,7 +36,6 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-end
 
  # 退会した会員が、同じアカウントでログイン出来ない処理
   def reject_withdraw_user
