@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :posts, only: [:index, :show, :edit, :new, :create, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
-      resource :favorites, only: [:create, :destroy]
+      resources :favorites, only: [:create, :destroy]
     end
 
     get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'

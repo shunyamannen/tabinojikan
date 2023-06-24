@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
-    before_action :ensure_correct_user, only: [:update, :edit]
-  
+   
+
   def index
     @posts = Post.all
     @post_page = Post.page(params[:page]).per(8)
@@ -8,6 +8,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = current_user.comments.new
+    @comments = @post.comments.page(params[:page]).per(5).reverse_order
   end
 
   def edit
