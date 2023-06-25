@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-   
+
 
   def index
     @posts = Post.all
@@ -44,7 +44,7 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.user.id == current_user
+    if @post.user.id == current_user.id
       @post.destroy
       redirect_to posts_path
     else
