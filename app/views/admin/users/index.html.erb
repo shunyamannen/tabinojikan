@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-5">
+      <h4>会員一覧（管理）</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>ユーザー</th>
+            <th>メールアドレス</th>
+            <th>会員ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="align-middle">
+                <%= link_to admin_user_path(user) do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= user.email %>
+              </td>
+              <td class="align-middle">
+                <% if user.members_status == false %>
+                  <p class="text-success font-weight-bold">有効</p>
+                <% else %>
+                  <p class="text-secondary">退会</p>
+                <% end %>
+              </td>
+              <td class="align-middle">
+                <%= link_to '編集する', edit_admin_user_path(user), class: "btn btn-warning" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
