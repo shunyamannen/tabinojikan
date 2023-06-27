@@ -1,8 +1,8 @@
- <div class="container">
-    <div class="row">
-      <div class="col-md-5">
-        <h2 class="bg-secondary text-center mb-0 pb-3" style="opacity: 0.5;">旅の時間</h2>
-        <h5 class="bg-secondary text-center py-1" style="opacity: 0.5;">
+ <div class='container'>
+  <div class='row align-items-center justify-content-start text-center flex-wrap'>
+    <div class="col-md-4 col-12 flex-column text-center">
+        <h2 class=" text-center mb-0 pb-3" style="opacity: 0.5;">旅の時間</h2>
+        <h5 class=" text-center py-1" style="opacity: 0.5;">
           本サイトは、  旅のスケジュールの詳細を投稿し共有するために運用をスタートしました。<br>
           最近ではコロナが明け旅行する方も増えてきている中、<br>
           旅行のスケジュール管理が苦手な方やどう行動すればスムーズに行動<br>
@@ -14,13 +14,15 @@
         </h5>
       </div>
     </div>
-    <div class="mt-3">
-      <%= link_to "ゲストログインで試す", method: :post, class:"btn btn-secondary btn-lg" %>
+    <div class="d-flex flex-column bd-highlight mb-3">
+     <div class="mt-3">
+      <%= link_to "ゲストログインで試す", users_guest_sign_in_path, method: :post, class:"btn btn-secondary btn-lg" %>
     </div>
     <div class="mt-3">
-      <%= link_to "ユーザー登録",  class: 'btn btn-primary btn-lg' %>
+      <%= link_to "ユーザー登録", new_user_registration_path, class: 'btn btn-primary btn-lg' %>
     </div>
     <div class="mt-3">
-      <%= link_to "ログイン",  class: 'btn btn-success btn-lg' %>
+      <%= link_to "ログイン", new_user_session_path , class: 'btn btn-success btn-lg' %>
     </div>
   </div>
+</div>

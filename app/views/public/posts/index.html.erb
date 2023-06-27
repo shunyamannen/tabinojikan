@@ -12,6 +12,14 @@
     </div>
   </div>
 
+    <div class="col-md-5 col-sm-7 mb-3" >
+      <!--投稿検索フォーム-->
+      <%= search_form_for @q, url: posts_path, class:"form-inline" do |f| %>
+        <%= f.search_field :title_or_body_cont, placeholder: "キーワード検索",class:"form-control mr-sm-2" %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+  </div>
   
   <!--投稿一覧-->
   <div class="row">
@@ -23,7 +31,7 @@
         <% end %>
         <div class="card-body py-0">
           <h6 class="card-title"><%= post.title %></h6>
-          <h6 class="text-center">いいね<%= post.favorites.count %></h6>
+           <h6 class="card-title d-inline-block"><i class="fas fa-heart fa-lg" style="color: #ff0000;"></i> いいね (<%=post.favorites.count %>)</h6>
         </div>
       </div>
     </div>
@@ -33,7 +41,7 @@
   <!--ページネーション-->
   <div class="row">
     <div class="mb-2 d-block mx-auto">
-    <h5><%= paginate @post_page %></h5>
+    <h5><%= paginate @posts %></h5>
     </div>
   </div>
 </div>

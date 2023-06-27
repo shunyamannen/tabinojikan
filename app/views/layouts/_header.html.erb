@@ -7,8 +7,10 @@
         </a>
         <div class="col content-right ml-auto">
           <div class="collapse navbar-collapse small" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto"> 
+            
                 <!--会員がログインしているとき-->
+             <div class='row align-items-center justify-content-center text-center flex-wrap'>
                 <% if user_signed_in? %>
                 <div class="mr-5 mt-2">
                   <a class="navbar-brand text-dark mt-2" href="/"><span>ようこそ<%= current_user.name %>さん！</span></a>
@@ -74,6 +76,7 @@
                   <% end %>
                 </li>
                 <% end %>
+            </div>
           </ul>
         </div>
       </div>
