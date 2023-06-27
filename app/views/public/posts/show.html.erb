@@ -3,18 +3,13 @@
     <div class="col-lg-4 px-sm-0 mb-3">
       <h4 class="d-inline-block">投稿詳細</h4>
     </div>
-
-    <div class="col-lg-8 px-sm-0 mb-3">
-      <!--編集ボタン-->
-      <%= link_to edit_post_path(@post), class:"btn btn-lg btn-primary" do %>
-      <div class="mb-0"><i class="far fa-edit"></i> 編集する</div>
-      <% end %>
-
-      <!--削除ボタン-->
-      <% if @post.user == current_user %>
-      <%= link_to "削除する", post_path(@post), method: :delete, class:"ml-3 btn btn-lg btn-warning" %>
-      <% end %>
-    </div>
+      <!-- 自分の投稿の場合はボタンを表示 -->
+        <div class="right-button">
+          <% if @user == current_user %>
+            <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary mr-2" %>
+            <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
+          <% end %>
+        </div>
 
     <!--投稿情報-->
     <div class="col-sm-8 mx-auto text-left">
@@ -36,7 +31,12 @@
           <td><%= @post.body %></td>
         </tr>
       </table>
+       <!--いいね機能-->
+        <div class="favorite-btn">
+          <%= render 'public/favorites/favorite', post: @post %>
+        </div>
     </div>
+  </div>
 
      <!--コメント投稿-->
       <div class="row mt-4">
