@@ -1,6 +1,6 @@
-class Admin::SerchesController < ApplicationController
+class Admin::SearchController < ApplicationController
   
-  def seach
+  def search
   end
   
 end
