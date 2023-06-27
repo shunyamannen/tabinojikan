@@ -1,80 +1,83 @@
 <header>
-  <nav class="navbar navbar-expand-lg bg-info bg-gradient">
-    <div class="container-md">
-      <div class="mx-3">
-        <h1></h1>
-      </div>
-      <h1 class="text-center mt-3" style="font-family: 'Meiryo', cursive;">旅の時間</h1>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <!--会員がログインしているとき-->
-          <% if user_signed_in? %>
-          <div class="mr-5 mt-2">
-            ようこそ、<strong><%= current_user.name %></strong> さん！
-          </div>
-          <li>
-            <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
-              <i class="fas fa-user"></i> マイページ
-            <% end %>
-          </li>
-          <li>
-            <%= link_to posts_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-shoe-prints"></i> 投稿一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
-
-          <!--管理者がログインしているとき-->
-          <% elsif admin_signed_in? %>
-          <div class=" mt-2 mr-2"><strong> 管理者 </strong></div>
-          <li>
-            <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-shoe-prints"></i> 投稿一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-users"></i> ユーザー一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
-            <% end %>
-          </li>
-
-          <!--ログインしていないとき-->
-          <% else %>
-          <!--<div class="mr-5 mt-2">-->
-            <!--ようこそ<strong>ゲスト</strong> さん！-->
-          <!--</div>-->
-          <li>
-            <%= link_to about_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-link"></i> About
-            <% end %>
-          </li>
-          <li>
-            <%= link_to posts_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-shoe-prints"></i> 投稿一覧
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-user-plus"></i> 会員登録
-            <% end %>
-          </li>
-          <li>
-            <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
-            <% end %>
-          </li>
-          <% end %>
-        </ul>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFE194;">
+    <div class="container">
+      <div class="row">
+        <a class="navbar-brand" href="/">
+          <h1>旅の時間</h1>
+        </a>
+        <div class="col content-right ml-auto">
+          <div class="collapse navbar-collapse small" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+                <!--会員がログインしているとき-->
+                <% if user_signed_in? %>
+                <div class="mr-5 mt-2">
+                  <a class="navbar-brand text-dark mt-2" href="/"><span>ようこそ<%= current_user.name %>さん！</span></a>
+                </div>
+                <li class="nav-item">
+                  <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
+                    マイページ
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                     投稿一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                     ログアウト
+                  <% end %>
+                </li>
+      
+                <!--管理者がログインしているとき-->
+                <% elsif admin_signed_in? %>
+                <a class="navbar-brand text-dark mt-2" href="/"><span> 管理者ログイン中</span></a>
+                <li class="nav-item">
+                  <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-shoe-prints"></i> 投稿一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-users"></i> 会員一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-sign-out-alt"></i> ログアウト
+                  <% end %>
+                </li>
+      
+                <!--ログインしていないとき-->
+                <% else %>
+                <!--<div class="mr-5 mt-2">-->
+                  <!--ようこそ<strong>ゲスト</strong> さん！-->
+                <!--</div>-->
+                <li class="nav-item">
+                  <%= link_to about_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-link"></i> About
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-shoe-prints"></i> 投稿一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-user-plus"></i> 会員登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                    <i class="fas fa-sign-in-alt"></i> ログイン
+                  <% end %>
+                </li>
+                <% end %>
+          </ul>
+        </div>
       </div>
     </div>
+   </div>
   </nav>
 </header>

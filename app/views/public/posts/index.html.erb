@@ -12,6 +12,7 @@
     </div>
   </div>
 
+  
   <!--投稿一覧-->
   <div class="row">
     <% @posts.each do |post| %>
@@ -22,8 +23,7 @@
         <% end %>
         <div class="card-body py-0">
           <h6 class="card-title"><%= post.title %></h6>
-          <h6 class="card-title d-inline-block">いいね○件</h6>
-          <h6 class="card-title d-inline-block pl-4">閲覧数○件</h6>
+          <h6 class="text-center">いいね<%= post.favorites.count %></h6>
         </div>
       </div>
     </div>
