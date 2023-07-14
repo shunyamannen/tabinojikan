@@ -10,6 +10,18 @@
             <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
           <% end %>
         </div>
+        <div class="col-lg-8 px-sm-0 mb-3">
+      <!--編集ボタン-->
+      <% if @post.user == current_user %>
+        <%= link_to edit_post_path(@post), class: "btn btn-lg btn-primary" do %>
+          <div class="mb-0"><i class="far fa-edit"></i> 編集する</div>
+        <% end %>
+      <% end %>
+      <!--削除ボタン-->
+      <% if @post.user == current_user %>
+        <%= link_to "削除する", post_path(@post), method: :delete, class: "ml-3 btn btn-lg btn-warning" %>
+      <% end %>
+    </div>
 
     <!--投稿情報-->
     <div class="col-sm-8 mx-auto text-left">
