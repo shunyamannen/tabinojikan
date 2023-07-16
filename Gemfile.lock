@@ -266,7 +266,7 @@ DEPENDENCIES
   dotenv-rails
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
-  kaminari
+  kaminari (~> 1.2.1)
   listen (~> 3.3)
   mysql2
   net-imap
