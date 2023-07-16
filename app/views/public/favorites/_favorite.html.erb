@@ -1,9 +1,11 @@
 <% if post.favorited?(current_user) %>
   <%= link_to post_favorites_path(post_id: post.id), method: :delete, remote: true, class: "text-dark" do %>
-    いいね<%= post.favorites.count %>
+   <%= image_tag '709.png', size: '45x45' %> 
+   <%= post.favorites.count %>
   <% end %>
 <% else %>
   <%= link_to post_favorites_path(post_id: post.id), method: :post, remote: true, class: "text-dark" do %>
-   いいね <%= post.favorites.count %>
+  <%= image_tag '710.png', size: '45x45' %>
+  <%= post.favorites.count %>
   <% end %>
 <% end %>

@@ -5,12 +5,12 @@
     </div>
       <!-- 自分の投稿の場合はボタンを表示 -->
         <div class="right-button">
-          <% if @user == current_user %>
+          <% if @post.user == current_user %>
           <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary mr-2" %>
           <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
           <% end %>
         </div>
-        
+
         <div class="col-lg-8 px-sm-0 mb-3">
         <!--編集ボタン-->
          <% if @post.user == current_user %>
@@ -27,16 +27,17 @@
         <!--投稿情報-->
           <table class="table table-reflow">
            <tr>
-            <th style="width:120px">タイトル</th>
-            <td><%= @post.title %></td>
+            <th style="width:150px">ユーザー名</th>
+            <td><%= @post.user.name %></td>
+             <%= render 'public/relationships/info', user: @post.user %>
            </tr>
            <tr>
             <th style="width:150px">投稿日</th>
             <td><%= @post.created_at.to_s(:datetime_jp) %></td>  <!--日付の表示調整した-->
            </tr>
            <tr>
-             <th style="width:150px">ユーザー名</th>
-             <td><%= @post.user.name %></td>
+            <th style="width:120px">タイトル</th>
+            <td><%= @post.title %></td>
            </tr>
             <tr>
               <th style="width:150px">内容</th>
@@ -44,7 +45,7 @@
             </tr>
           </table>
            <!--いいね機能-->
-            <div class="favorite-btn">
+            <div class="favorite-btn" id="favorite_buttons_<%= @post.id %>">
               <%= render 'public/favorites/favorite', post: @post %>
             </div>
   </div>
@@ -57,7 +58,7 @@
             <%= render 'public/comments/comment_form', post: @post, comment: @comment %>
           </div>
         </div>
-        
+
         <!--コメント一覧表示-->
         <div class="col-lg-8 text-left">
           <div id="comments_area">

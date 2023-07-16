@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
-         
+
+
           has_many :posts, dependent: :destroy
           has_many :comments, dependent: :destroy
           has_many :favorites, dependent: :destroy
@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates:introduction, length:{maximum: 100}
-  
+
     ## ゲストログイン方法
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |end_user|
@@ -41,18 +41,19 @@ class User < ApplicationRecord
     end
   end
 
-  ## フォローしたときの処理  
-  def follow(end_user)
-    active_relationships.create(followed_id: end_user.id)
+  # フォローした時の処理
+  def follow(user_id)
+    active_relationships.create!(followed_id: user_id)
   end
 
-  ## フォローを外すときの処理
-  def unfollow(end_user)
-    active_relationships.find_by(followed_id: end_user.id).destroy
+  # フォローした時の処理
+  def unfollow(user_id)
+    active_relationships.find_by!(followed_id: user_id).destroy!
   end
 
-  ## フォローしているか判定
-  def following?(end_user)
-    followings.include?(end_user)
+  # フォローしているか判定
+  def following?(user)
+    followings.include?(user)
   end
+
 end
