@@ -33,7 +33,7 @@
            </tr>
            <tr>
             <th style="width:150px">投稿日</th>
-            <td><%= @post.created_at.to_s(:datetime_jp) %></td>  <!--日付の表示調整した-->
+            <td><%= @post.created_at.strftime("%Y/%m/%d") %></td>  <!--日付の表示調整した-->
            </tr>
            <tr>
             <th style="width:120px">タイトル</th>

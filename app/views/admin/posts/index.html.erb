@@ -34,7 +34,7 @@
                 <% end %>
               </td>
               <td class="align-middle">
-                <%= post.created_at.to_s(:datetime_jp) %>
+                <%= post.created_at.strftime("%Y/%m/%d") %>
               </td>
               <td class="align-middle">
                 <%= link_to '削除', admin_post_path(post),method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>

@@ -15,7 +15,7 @@
         <%= post.title %>
       <% end %>
     </td>
-    <td class="align-middle"><%= post.created_at.to_s(:datetime_jp) %></td>
+    <td class="align-middle"><%= post.created_at.strftime("%Y/%m/%d") %></td>
     <td class="align-middle"><%= post.favorites.count %></td>
     <td class="align-middle"><%= post.comments.count %></td>
   </tbody>
