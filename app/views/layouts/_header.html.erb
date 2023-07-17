@@ -1,78 +1,74 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFE194;">
-    <div class="container">
-      <div class="row">
-        <a class="navbar-brand" href="/">
-          <%= image_tag 'tabinojikan.png', alt: "アイコン、クリックするとトップページに遷移する", size: '100x60' %>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-        </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <%= image_tag 'tabi.png', alt: "アイコン、クリックするとトップページに遷移する", size: '90x90' %>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
 
-                <!--会員がログインしているとき-->
-             <div class='row align-items-center justify-content-center text-center flex-wrap'>
-                <% if user_signed_in? %>
-                <div class="mr-1 mt-1">
-                  <a class="navbar-brand text-dark mt-2" href="/"><span>ようこそ<%= current_user.name %>さん！</span></a>
-                </div>
-                <li class="nav-item">
-                  <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
-                  <%= image_tag '320.png', size: '45x45' %>ホーム
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to posts_path, class: 'nav-link text-dark' do %>
-                  <%= image_tag '434.png', size: '45x45' %>投稿
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                  <%= image_tag '603.png', size: '45x45' %>退出
-                  <% end %>
-                </li>
-
-                <!--管理者がログインしているとき-->
-                <% elsif admin_signed_in? %>
-                <a class="navbar-brand text-dark mt-2" href="/"><span> 管理者ログイン中</span></a>
-                <li class="nav-item">
-                  <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
-                  <%= image_tag '434.png', size: '45x45' %>投稿一覧
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-                    <%= image_tag '851.png', size: '45x45' %>会員一覧
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                    <%= image_tag '603.png', size: '45x45' %>退出
-                  <% end %>
-                </li>
-
-                <!--ログイン前-->
-                <% else %>
-                <li class="nav-item">
-                  <%= link_to about_path, class: 'nav-link text-dark' do %>
-                    <%= image_tag '701.png', size: '45x45' %>概要
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
-                   <%= image_tag '530.png', size: '45x45' %> 会員登録
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-                   <%= image_tag '614.png', size: '45x45' %> ログイン
-                  <% end %>
-                </li>
+              <!--会員がログインしているとき-->
+           <div class='row align-items-center justify-content-center text-center flex-wrap'>
+              <% if user_signed_in? %>
+              <a class="navbar-brand text-dark" href="/"><span>ようこそ<%= current_user.name %>さん！</span></a>
+              <li class="nav-item">
+                <%= link_to user_path(current_user), class: 'nav-link text-dark' do %>
+                <%= image_tag '320.png', size: '45x45' %>ホーム
                 <% end %>
-            </div>
-          </ul>
-        </div>
+              </li>
+              <li class="nav-item">
+                <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                <%= image_tag '434.png', size: '45x45' %>投稿
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <%= image_tag '603.png', size: '45x45' %>退出
+                <% end %>
+              </li>
+
+              <!--管理者がログインしているとき-->
+              <% elsif admin_signed_in? %>
+              <a class="navbar-brand text-dark mt-2" href="/"><span> 管理者ログイン中</span></a>
+              <li class="nav-item">
+                <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+                <%= image_tag '434.png', size: '45x45' %>投稿一覧
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                  <%= image_tag '851.png', size: '45x45' %>会員一覧
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  <%= image_tag '603.png', size: '45x45' %>退出
+                <% end %>
+              </li>
+
+              <!--ログイン前-->
+              <% else %>
+              <li class="nav-item">
+                <%= link_to about_path, class: 'nav-link text-dark' do %>
+                  <%= image_tag '701.png', size: '45x45' %>概要
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                 <%= image_tag '530.png', size: '45x45' %> 会員登録
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                 <%= image_tag '614.png', size: '45x45' %> ログイン
+                <% end %>
+              </li>
+              <% end %>
+          </div>
+        </ul>
       </div>
     </div>
   </nav>
