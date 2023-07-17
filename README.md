@@ -1,6 +1,6 @@
 <h1 align="center">旅の時間 </h1>
 <p align="center">
-  <img width="300" align="center" alt="cocodo" src="https://github.com/gxxdrina/cocodo/assets/127483650/1add9480-3105-499e-a441-eb0cc878d2f7">
+  <img width="300" align="center" alt="cocodo" src="https://github.com/shunyamannen/ryokounojikan/assets/129735340/e853f136-4fb6-4065-8792-53db44cc5aa6">
 </p>
 ## サイト概要
 
