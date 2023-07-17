@@ -10,20 +10,6 @@
           <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: 'この投稿を削除してよろしいですか？' }, class: "btn btn-outline-danger" %>
           <% end %>
         </div>
-
-        <div class="col-lg-8 px-sm-0 mb-3">
-        <!--編集ボタン-->
-         <% if @post.user == current_user %>
-         <%= link_to edit_post_path(@post), class: "btn btn-lg btn-primary" do %>
-         <div class="mb-0"><i class="far fa-edit"></i> 編集する</div>
-         <% end %>
-         <% end %>
-        <!--削除ボタン-->
-         <% if @post.user == current_user %>
-         <%= link_to "削除する", post_path(@post), method: :delete, class: "ml-3 btn btn-lg btn-warning" %>
-         <% end %>
-        </div>
-
         <!--投稿情報-->
           <table class="table table-reflow">
            <tr>
@@ -33,7 +19,7 @@
            </tr>
            <tr>
             <th style="width:150px">投稿日</th>
-            <td><%= @post.created_at.to_s(:datetime_jp) %></td>  <!--日付の表示調整した-->
+            <td><%= @post.created_at.strftime("%Y/%m/%d") %></td>  <!--日付の表示調整した-->
            </tr>
            <tr>
             <th style="width:120px">タイトル</th>
